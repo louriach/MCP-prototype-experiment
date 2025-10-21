@@ -3,171 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Get in Touch</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-background-brand-default: #2c2c2c;
+            --color-background-default: #ffffff;
+            --color-background-secondary: #f5f5f5;
+            --color-border-default: #d9d9d9;
+            --color-text-primary: #000000;
+            --color-text-secondary: #666666;
+            --color-text-inverse: #ffffff;
+            --space-200: 8px;
+            --space-400: 16px;
+            --space-600: 24px;
+            --space-800: 32px;
+            --space-1200: 48px;
+            --space-2400: 96px;
+            --radius-200: 8px;
+            --stroke-border: 1px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+            background-color: var(--color-background-brand-default);
+            color: var(--color-text-primary);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--color-background-default);
+            border-bottom: 1px solid var(--color-border-default);
+            padding: var(--space-400) var(--space-600);
+        }
+
+        .header-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--color-text-primary);
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-800);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-800);
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-primary);
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text-secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: var(--space-400);
+        }
+
+        .btn {
+            padding: var(--space-200) var(--space-600);
+            border-radius: var(--radius-200);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border-default);
+        }
+
+        .btn-primary {
+            background-color: var(--color-background-brand-default);
+            color: var(--color-text-inverse);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--color-background-default);
+            padding: var(--space-2400) var(--space-600);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-600);
+        }
+
+        .hero-subtitle {
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--color-text-secondary);
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: var(--color-background-secondary);
+            display: flex;
+            min-height: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .form-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-1200);
+        }
+
+        .contact-form {
+            background-color: var(--color-background-default);
+            border: var(--stroke-border) solid var(--color-border-default);
+            border-radius: var(--radius-200);
+            padding: var(--space-600);
+            width: 100%;
+            max-width: 500px;
+            min-width: 320px;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-600);
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: var(--space-200);
+            color: var(--color-text-primary);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: var(--space-400);
+            border: var(--stroke-border) solid var(--color-border-default);
+            border-radius: var(--radius-200);
+            font-family: inherit;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-background-brand-default);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #999;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: var(--space-400);
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: var(--space-600);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-background-default);
+            padding: var(--space-2400) var(--space-600);
+        }
+
+        .footer-content {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            gap: var(--space-1200);
+            margin-bottom: var(--space-1200);
+        }
+
+        .footer-brand {
+            flex: 1;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--space-600);
+        }
+
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-400);
+            list-style: none;
+        }
+
+        .social-links a {
+            color: var(--color-text-primary);
+            transition: color 0.2s;
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-column {
+            flex: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--space-600);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-400);
+        }
+
+        .footer-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 56px;
+            }
+
+            .hero-subtitle {
+                font-size: 24px;
+            }
+
+            .form-section {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+            .hero-section {
+                padding: var(--space-1200) var(--space-600);
+            }
+
+            .form-wrapper {
+                padding: var(--space-600);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: var(--space-800);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="4" width="7" height="7" rx="2" fill="currentColor"/>
-                    <rect x="13" y="4" width="7" height="7" rx="2" fill="currentColor"/>
-                    <rect x="4" y="13" width="7" height="7" rx="2" fill="currentColor"/>
-                    <rect x="13" y="13" width="7" height="7" rx="2" fill="currentColor"/>
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="6" fill="#2c2c2c"/>
+                    <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-            </div>
-            <nav class="nav">
-                <a href="#products">Products</a>
-                <a href="#solutions">Solutions</a>
-                <a href="#community">Community</a>
-                <a href="#resources">Resources</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
-                <a href="#link">Link</a>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#link">Link</a></li>
+                </ul>
+                <div class="header-actions">
+                    <a href="#signin" class="btn btn-secondary">Sign in</a>
+                    <a href="#register" class="btn btn-primary">Register</a>
+                </div>
             </nav>
-            <div class="header-actions">
-                <button class="btn-secondary">Sign in</button>
-                <button class="btn-primary">Register</button>
-            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">Get in touch</h1>
+            <h1>Get in touch</h1>
             <p class="hero-subtitle">We will respond within 3 working days.</p>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-section">
-        <div class="contact-container">
-            <div class="image-container">
-                <img src="http://localhost:3845/assets/6fa81e6575b7cb7148d3af06e8239e8f6141ac59.png" 
-                     alt="Conference venue" 
-                     class="contact-image"
-                     onerror="this.style.display='none'">
-            </div>
-            <div class="form-wrapper">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Value" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="surname">Surname</label>
-                        <input type="text" id="surname" name="surname" placeholder="Value" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="region">Region</label>
-                        <select id="region" name="region" required>
-                            <option value="United Kingdom" selected>United Kingdom</option>
-                            <option value="Option 2">Option 2</option>
-                            <option value="Option 3">Option 3</option>
-                            <option value="Option 4">Option 4</option>
-                            <option value="Option 5">Option 5</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Value" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Value" rows="4" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">Submit</button>
-                </form>
-            </div>
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="hero-image">
+            <img src="http://localhost:3845/assets/6fa81e6575b7cb7148d3af06e8239e8f6141ac59.png" alt="Conference venue with colorful lighting">
+        </div>
+        <div class="form-wrapper">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Value" required>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surname" name="surname" placeholder="Value" required>
+                </div>
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <select id="region" name="region" required>
+                        <option value="United Kingdom" selected>United Kingdom</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                        <option value="Option 4">Option 4</option>
+                        <option value="Option 5">Option 5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Value" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Value" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="4" y="4" width="7" height="7" rx="2" fill="currentColor"/>
-                        <rect x="13" y="4" width="7" height="7" rx="2" fill="currentColor"/>
-                        <rect x="4" y="13" width="7" height="7" rx="2" fill="currentColor"/>
-                        <rect x="13" y="13" width="7" height="7" rx="2" fill="currentColor"/>
-                    </svg>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="32" height="32" rx="6" fill="#2c2c2c"/>
+                            <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <ul class="social-links">
+                        <li>
+                            <a href="#twitter" aria-label="Twitter">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#instagram" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#youtube" aria-label="YouTube">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#linkedin" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="social-links">
-                    <a href="#" aria-label="Twitter">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="YouTube">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-links">
                 <div class="footer-column">
                     <h3>Use cases</h3>
-                    <ul>
-                        <li><a href="#">UI design</a></li>
-                        <li><a href="#">UX design</a></li>
-                        <li><a href="#">Wireframing</a></li>
-                        <li><a href="#">Diagramming</a></li>
-                        <li><a href="#">Brainstorming</a></li>
-                        <li><a href="#">Online whiteboard</a></li>
-                        <li><a href="#">Team collaboration</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#ui-design">UI design</a></li>
+                        <li><a href="#ux-design">UX design</a></li>
+                        <li><a href="#wireframing">Wireframing</a></li>
+                        <li><a href="#diagramming">Diagramming</a></li>
+                        <li><a href="#brainstorming">Brainstorming</a></li>
+                        <li><a href="#online-whiteboard">Online whiteboard</a></li>
+                        <li><a href="#team-collaboration">Team collaboration</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Explore</h3>
-                    <ul>
-                        <li><a href="#">Design</a></li>
-                        <li><a href="#">Prototyping</a></li>
-                        <li><a href="#">Development features</a></li>
-                        <li><a href="#">Design systems</a></li>
-                        <li><a href="#">Collaboration features</a></li>
-                        <li><a href="#">Design process</a></li>
-                        <li><a href="#">FigJam</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#design">Design</a></li>
+                        <li><a href="#prototyping">Prototyping</a></li>
+                        <li><a href="#development-features">Development features</a></li>
+                        <li><a href="#design-systems">Design systems</a></li>
+                        <li><a href="#collaboration-features">Collaboration features</a></li>
+                        <li><a href="#design-process">Design process</a></li>
+                        <li><a href="#figjam">FigJam</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Best practices</a></li>
-                        <li><a href="#">Colors</a></li>
-                        <li><a href="#">Color wheel</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Developers</a></li>
-                        <li><a href="#">Resource library</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#best-practices">Best practices</a></li>
+                        <li><a href="#colors">Colors</a></li>
+                        <li><a href="#color-wheel">Color wheel</a></li>
+                        <li><a href="#support">Support</a></li>
+                        <li><a href="#developers">Developers</a></li>
+                        <li><a href="#resource-library">Resource library</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                surname: document.getElementById('surname').value,
+                region: document.getElementById('region').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Log form data (in production, this would be sent to a server)
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            alert('Thank you for your message! We will respond within 3 working days.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
 </body>
 </html>
 
